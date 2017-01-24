@@ -6,7 +6,8 @@
   "scripts": {
     "start": "electron js/electron.js",
     "postinstall": "sh installers/postinstall/postinstall.sh",
-    "test": "./node_modules/mocha/bin/mocha tests --recursive"
+    "test": "./node_modules/mocha/bin/mocha tests --recursive",
+    "test:e2e": "./node_modules/mocha/bin/mocha tests/vars/e2e_test.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
     "grunt-stylelint": "latest",
     "grunt-yamllint": "latest",
     "mocha": "^3.2.0",
+    "spectron": "^3.4.1",
     "stylelint-config-standard": "latest",
     "time-grunt": "latest"
   },
