@@ -35,6 +35,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add test e2e helloworld
 - Add test e2e enviroment
 - Add `chai-as-promised` npm module to devDependencies
+- Run e2e test in Travis
 
 ### Fixed
 - Update .gitignore to not ignore default modules folder.
