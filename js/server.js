@@ -20,7 +20,13 @@ var Server = function(config, callback) {
 	server.listen(config.port, config.address ? config.address : null);
 
 	app.use(function(req, res, next) {
-		var result = ipfilter(config.ipWhitelist, {mode: "allow", log: false})(req, res, function(err) {
+		mode = "allow";
+		ipWhitelist = config.ipWhitelist;
+		if (ipWhitelist === false) {
+			mode = "deny";
+			ipWhitelist = [];
+		}
+		var result = ipfilter(ipWhitelist, {mode: mode, log: false})(req, res, function(err) {
 			if (err === undefined) {
 				return next();
 			}
