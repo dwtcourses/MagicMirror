@@ -8,6 +8,7 @@
  */
 
 var vendor = {
+	'handlebars': 'node_modules/handlebars/dist/handlebars.js',
 	'moment.js' : 'node_modules/moment/min/moment-with-locales.js',
 	'moment-timezone.js' : 'node_modules/moment-timezone/moment-timezone.js',
 	'weather-icons.css': 'node_modules/weathericons/css/weather-icons.css',
