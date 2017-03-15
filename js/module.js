@@ -27,6 +27,9 @@ var Module = Class.extend({
 	// visibility when hiding and showing module.
 	lockStrings: [],
 
+	// Set if use template system instanceof getDom for create module output
+	useTemplate: false,
+
 	/* init()
 	 * Is called when the module is instantiated.
 	 */
@@ -89,6 +92,14 @@ var Module = Class.extend({
 		div.appendChild(identifierWrapper);
 
 		return div;
+	},
+
+	getTemplate: function() {
+		return [];
+	},
+
+	setDataTemplate: function(data) {
+
 	},
 
 	/* getHeader()
