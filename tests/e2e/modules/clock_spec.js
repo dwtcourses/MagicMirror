@@ -121,4 +121,25 @@ describe("Clock module", function () {
 		});
 	});
 
+	describe("with timezone at America/Santiago", function() {
+		before(function() {
+			process.env.MM_CONFIG_FILE = "tests/configs/modules/clock/clock_timezone_america_santiago.js";
+		});
+
+		beforeEach(function (done) {
+			app.start().then(function() { done(); } );
+		});
+
+		afterEach(function (done) {
+			app.stop().then(function() { done(); });
+		});
+
+		it("shows 12hr time with upper case AM/PM", function() {
+			const timeRegex = /^(?:1[0-2]|[1-9]):[0-5]\d[0-5]\d[AP]M$/;
+			return app.client.waitUntilWindowLoaded()
+				.getText(".clock .time").should.eventually.match(timeRegex);
+		});
+
+	});
+
 });
