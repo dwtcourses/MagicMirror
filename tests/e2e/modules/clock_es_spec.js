@@ -101,7 +101,7 @@ describe("Clock set to spanish language module", function () {
 		});
 
 		it("shows week with correct number of week of year", function() {
-			const currentWeekNumber = require('current-week-number')();
+			const currentWeekNumber = require("current-week-number")();
 			const weekToShow = "Semana " + currentWeekNumber;
 			return app.client.waitUntilWindowLoaded()
 				.getText(".clock .week").should.eventually.equal(weekToShow);
