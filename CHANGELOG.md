@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.1.2] - Unreleased
 
 ### Changed
+- Revert Docker related changes in favor of [docker-MagicMirror](https://github.com/bastilimbach/docker-MagicMirror). All Docker images are outsourced. ([#856](https://github.com/MichMich/MagicMirror/pull/856))
 - Change Docker base image (Debian + Node) to an arm based distro (AlpineARM + Node) ([#846](https://github.com/MichMich/MagicMirror/pull/846))
 - Fix the dockerfile to have it running from the first time.
 
@@ -15,6 +16,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add test check URLs of vendors.
 - Add test of match current week number on clock module with showWeek configuration.
 - Add test e2e showWeek feature in spanish language.
+- Add test default modules present modules/default/defaultmodules.js.
+- Add unit test calendar_modules function capFirst.
 
 ### Updated
 - Added missing keys to Polish translation.
@@ -22,6 +25,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 - Fix instruction in README for using automatically installer script.
+- Bug of duplicated compliments as described in [here](https://forum.magicmirror.builders/topic/2381/compliments-module-stops-cycling-compliments).
+- Fix double message about port when server is starting
 
 ## [2.1.1] - 2017-04-01
 
