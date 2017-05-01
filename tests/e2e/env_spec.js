@@ -21,6 +21,9 @@ describe("Electron app environment", function () {
 	});
 
 	it("is set to open new app window", function () {
+
+		console.log(process.env.no_proxy);
+		console.log(process.env.NO_PROXY);
 		return app.client.waitUntilWindowLoaded()
 			.getWindowCount().should.eventually.equal(1);
 	});
