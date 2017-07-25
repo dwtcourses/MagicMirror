@@ -58,7 +58,12 @@ var defaults = {
 			position: "middle_center",
 			classes: "xsmall",
 			config: {
-				text: "If you get this message while your config file is already<br>created, your config file probably contains an error.<br>Use a JavaScript linter to validate your file."
+				// You can using this kind of things in your configuration file
+				// called  by team  "exotic content"
+				// This is a principal reason why not using a JSON file
+				text: "If you get this message while your config file is already<br>created," +
+				      " your config file probably contains an error.<br>Use a JavaScript linter " +
+				      "to validate your file."
 			}
 		},
 		{
