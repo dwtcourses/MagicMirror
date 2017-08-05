@@ -11,7 +11,8 @@ const after = global.after;
 
 describe("Vendors", function () {
 
-	return; // Test still getting failed in Travis
+	// return; // Test still getting failed in Travis
+
 
 	helpers.setupTimeout(this);
 
