@@ -1,8 +1,9 @@
 const helpers = require("./global-setup");
 const path = require("path");
-const request = require("request");
+const request = require("supertest");
 
 const expect = require("chai").expect;
+const assert = require("chai").assert;
 
 const describe = global.describe;
 const it = global.it;
@@ -10,8 +11,6 @@ const before = global.before;
 const after = global.after;
 
 describe("Vendors", function () {
-
-	return; // Test still getting failed in Travis
 
 	helpers.setupTimeout(this);
 
@@ -30,16 +29,27 @@ describe("Vendors", function () {
 	describe("Get list vendors", function () {
 
 		before(function () {
+			client = request.agent("http://localhost:8080");
 			process.env.MM_CONFIG_FILE = "tests/configs/env.js";
 		});
 
 		var vendors = require(__dirname + "/../../vendor/vendor.js");
 		Object.keys(vendors).forEach(vendor => {
-			it(`should return 200 HTTP code for vendor "${vendor}"`, function () {
-				urlVendor = "http://localhost:8080/vendor/" + vendors[vendor];
-				request.get(urlVendor, function (err, res, body) {
-					expect(res.statusCode).to.equal(200);
-				});
+			it(`should return 200 HTTP code for vendor "${vendor} and ContentType"`, function () {
+				urlVendor = "/vendor/" + vendors[vendor];
+
+
+				client.get(urlVendor)
+					.expect("Content-type", /css|javascript/)
+					.expect(200)
+					.end(function(err,res) {
+						if(err) {
+							console.log("error " + err);
+							return;
+						}
+						assert.equal(res.status, 200);
+						done();
+					});
 			});
 		});
 	});
