@@ -50,4 +50,17 @@ describe("ipWhitelist directive configuration", function () {
 		});
 	});
 
+	describe("Set default values", function() {
+		before(function () {
+			// Set config sample for use in test
+			process.env.MM_CONFIG_FILE = "tests/configs/defaultIpWhiteList.js";
+		});
+		it("should return 200", function (done) {
+			request.get("http://localhost:8080", function (err, res, body) {
+				expect(res.statusCode).to.equal(200);
+				done();
+			});
+		});
+	});
+
 });
