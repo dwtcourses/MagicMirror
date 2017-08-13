@@ -5,6 +5,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 ## [2.1.3] - Unreleased
 
 ### Changed
+- Remove Roboto fonts files inside  `fonts` and these are installed by npm install command.
 
 ### Added
 - Add `clientonly` script to start only the electron client for a remote server.
@@ -12,6 +13,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add `.vscode/` folder to `.gitignore` to keep custom Visual Studio Code config out of git.
 - Add unit test the capitalizeFirstLetter function of newfeed module.
 - Add new unit tests for function `shorten` in calendar module.
+- Add new unit tests for function `getLocaleSpecification` in calendar module.
 - Add unit test for js/class.js.
 - Add unit tests for function `roundValue` in currentweather module.
 - Add test e2e showWeek feature in spanish language.
