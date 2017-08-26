@@ -6,6 +6,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Changed
 - Remove Roboto fonts files inside  `fonts` and these are installed by npm install command.
+- Set yes by default in the `apt-get install` helper tools for the installer script.
 
 ### Added
 - Add `clientonly` script to start only the electron client for a remote server.
