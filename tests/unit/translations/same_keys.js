@@ -6,13 +6,13 @@ var expect = chai.expect;
 describe("Translations have the same keys as en.js", function() {
 	var translations = require("../../../translations/translations.js");
 	var base = JSON.parse(stripComments(fs.readFileSync("translations/en.json", "utf8")));
-	var baseKeys = Object.keys(base).sort();
+	var baseKeys = Object.keys(base);
 
 	Object.keys(translations).forEach(function(tr) {
 		var fileName = translations[tr];
 		var fileContent = stripComments(fs.readFileSync(fileName, "utf8"));
 		var fileTranslations = JSON.parse(fileContent);
-		var fileKeys = Object.keys(fileTranslations).sort();
+		var fileKeys = Object.keys(fileTranslations);
 
 		it(fileName + " keys should be in base", function() {
 			fileKeys.forEach(function(key) {
@@ -28,7 +28,7 @@ describe("Translations have the same keys as en.js", function() {
 				// instead of the try-catch-block
 
 				try {
-					expect(fileKeys).to.deep.equal(baseKeys);
+					expect(fileKeys).to.have.deep.members(baseKeys);
 				} catch(e) {
 					if (e instanceof chai.AssertionError) {
 						test.skip();
