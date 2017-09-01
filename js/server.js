@@ -22,7 +22,7 @@ var Server = function(config, callback) {
 		port = process.env.MM_PORT;
 	}
 
-	console.log("Starting server on port " + port + " ... ");
+	console.log("Starting server on port " + config.address+":"+port + " ... ");
 
 	server.listen(port, config.address ? config.address : null);
 
@@ -72,6 +72,10 @@ var Server = function(config, callback) {
 
 	if (typeof callback === "function") {
 		callback(app, io);
+	}
+
+	this.close = function() {
+		server.close();
 	}
 };
 

@@ -216,7 +216,7 @@ var App = function() {
 			}
 
 			loadModules(modules, function() {
-				var server = new Server(config, function(app, io) {
+				this.server = new Server(config, function(app, io) {
 					console.log("Server started ...");
 
 					for (var h in nodeHelpers) {
@@ -231,10 +231,14 @@ var App = function() {
 					if (typeof callback === "function") {
 						callback(config);
 					}
-
 				});
 			});
 		});
+	};
+
+	this.stop = function(callback) {
+		server.close();
+		callback();
 	};
 };
 
