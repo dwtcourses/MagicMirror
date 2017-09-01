@@ -8,7 +8,16 @@ const os = require("os");
 const ifaces = os.networkInterfaces();
 
 describe("Listening address", function() {
-	var app = require("../../../js/app.js");
+	var app;
+
+	before(function() {
+		console.log("global: ", global);
+		app = require("../../../js/app.js");
+	});
+
+	after(function() {
+		console.log("global: ", global);
+	});
 
 	var forEachIp = function(callee) {
 		Object.keys(ifaces).forEach(function(ifname) {
@@ -74,8 +83,6 @@ describe("Listening address", function() {
 	});
 
 	afterEach(function(done) {
-		// Force restart of static code, especially to change config file
-		Object.keys(require.cache).forEach(function(key) { delete require.cache[key] });
 		app.stop(function() {
 			done();
 		});
