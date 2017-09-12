@@ -11,12 +11,12 @@ describe("Listening address", function() {
 	var app;
 
 	before(function() {
-		console.log("global: ", global);
+		// console.log("global: ", global);
 		app = require("../../../js/app.js");
 	});
 
 	after(function() {
-		console.log("global: ", global);
+		// console.log("global: ", global);
 	});
 
 	var forEachIp = function(callee) {
@@ -114,7 +114,7 @@ describe("Listening address", function() {
 
 	describe("Listening on default address", function() {
 		before(function() {
-			configFile = "NONE_EXISTING_CONFIG";
+			configFile = "tests/configs/defaults.js";
 		});
 
 		accessibleOnlyLocal();
