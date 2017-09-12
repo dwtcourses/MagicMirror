@@ -22,7 +22,7 @@ describe("Listening address", function() {
 	var forEachIp = function(callee) {
 		Object.keys(ifaces).forEach(function(ifname) {
 			ifaces[ifname].forEach(function(iface) {
-				if('IPv4' !== iface.family || iface.internal !== false) {
+				if("IPv4" !== iface.family || iface.internal !== false) {
 					// Skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
 					return;
 				}
@@ -108,7 +108,7 @@ describe("Listening address", function() {
 		before(function() {
 			configFile = "tests/configs/emptyAddress_emptyWhitelist.js";
 		});
-	
+
 		accessibleAllIps();
 	});
 
