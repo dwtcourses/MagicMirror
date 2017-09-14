@@ -41,6 +41,7 @@ exports.startApplication = function(options) {
 	options.path = exports.getElectronPath();
 	if (process.env.CI) {
 		options.startTimeout = 30000;
+		options.quitTimeout = 15000;
 	}
 
 	var app = new Application(options);

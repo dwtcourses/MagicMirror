@@ -10,7 +10,7 @@
     "postinstall": "sh installers/postinstall/postinstall.sh && npm run install-fonts",
     "test": "NODE_ENV=test ./node_modules/mocha/bin/mocha tests --recursive",
     "test:unit": "NODE_ENV=test ./node_modules/mocha/bin/mocha tests/unit --recursive",
-    "test:e2e": "NODE_ENV=test ./node_modules/mocha/bin/mocha tests/e2e --recursive",
+    "test:e2e": "NODE_ENV=test ./node_modules/mocha/bin/mocha tests/e2e --recursive --retries 2",
     "config:check": "node tests/configs/check_config.js"
   },
   "repository": {
