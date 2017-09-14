@@ -41,7 +41,7 @@ exports.startApplication = function(options) {
 	options.path = exports.getElectronPath();
 	if (process.env.CI) {
 		options.startTimeout = 30000;
-		options.quitTimeout = 15000;
+		// options.quitTimeout = 15000;
 	}
 
 	var app = new Application(options);
@@ -58,6 +58,19 @@ exports.stopApplication = function(app) {
 	}
 
 	return app.stop().then(function() {
+		console.log("is it still running?" + app.isRunning());
+		const { exec } = require('child_process');
+		exec('pgrep Electron', (err, stdout, stderr) => {
+			if (err) {
+				console.log("Electron is NOT found by pgrep");
+			} else {
+				console.log("Electron app found by pgrep");
+
+			}
+			console.log(`stdout: ${stdout}`);
+			console.log(`stderr: ${stderr}`);
+			return;
+		});
 		assert.equal(app.isRunning(), false);
 	});
 };
