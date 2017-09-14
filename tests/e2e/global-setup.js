@@ -58,19 +58,20 @@ exports.stopApplication = function(app) {
 	}
 
 	return app.stop().then(function() {
-		console.log("is it still running?" + app.isRunning());
-		const { exec } = require("child_process");
-		exec("pgrep Electron", (err, stdout, stderr) => {
-			if (err) {
-				console.log("Electron is NOT found by pgrep");
-			} else {
-				console.log("Electron app found by pgrep");
+		// console.log("is it still running?" + app.isRunning());
+		// const { exec } = require("child_process");
+		// exec("pgrep Electron", (err, stdout, stderr) => {
+		// 	if (err) {
+		// 		console.log("Electron is NOT found by pgrep");
+		// 	} else {
+		// 		console.log("Electron app found by pgrep");
 
-			}
-			console.log(`stdout: ${stdout}`);
-			console.log(`stderr: ${stderr}`);
-			return;
-		});
+		// 	}
+		// 	console.log(`stdout: ${stdout}`);
+		// 	console.log(`stderr: ${stderr}`);
+		// 	return;
+		// });
 		assert.equal(app.isRunning(), false);
+		return;
 	});
 };
