@@ -60,7 +60,7 @@ exports.stopApplication = function(app) {
 	return app.stop().then(function() {
 		console.log("is it still running?" + app.isRunning());
 		const { exec } = require("child_process");
-		exec('pgrep Electron', (err, stdout, stderr) => {
+		exec("pgrep Electron", (err, stdout, stderr) => {
 			if (err) {
 				console.log("Electron is NOT found by pgrep");
 			} else {
