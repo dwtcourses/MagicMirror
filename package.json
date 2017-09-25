@@ -46,7 +46,7 @@
     "jshint": "^2.9.4",
     "mocha": "^3.4.2",
     "mocha-each": "^1.1.0",
-    "spectron": "3.6.x",
+    "spectron": "3.5.x",
     "stylelint": "^8.0.0",
     "stylelint-config-standard": "latest",
     "time-grunt": "latest"
@@ -54,7 +54,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "colors": "^1.1.2",
-    "electron": "^1.6.10",
+    "electron": "^1.5.x",
     "express": "^4.15.3",
     "express-ipfilter": "0.3.1",
     "feedme": "latest",
