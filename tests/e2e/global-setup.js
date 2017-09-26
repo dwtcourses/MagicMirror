@@ -31,7 +31,7 @@ exports.getElectronPath = function() {
 // Set timeout - if this is run within Travis, increase timeout
 exports.setupTimeout = function(test) {
 	if (process.env.CI) {
-		test.timeout(30000);
+		test.timeout(50000);
 	} else {
 		test.timeout(10000);
 	}
@@ -40,7 +40,7 @@ exports.setupTimeout = function(test) {
 exports.startApplication = function(options) {
 	options.path = exports.getElectronPath();
 	if (process.env.CI) {
-		options.startTimeout = 30000;
+		options.startTimeout = 50000;
 	}
 
 	var app = new Application(options);
