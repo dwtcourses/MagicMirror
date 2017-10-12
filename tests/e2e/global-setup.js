@@ -12,6 +12,7 @@ const Application = require("spectron").Application;
 const assert = require("assert");
 const chai = require("chai");
 const chaiAsPromised = require("chai-as-promised");
+const childProcess = require("child_process");
 
 const path = require("path");
 
@@ -44,6 +45,17 @@ exports.startApplication = function(options) {
 		// options.quitTimeout = 15000;
 	}
 
+	console.log("Called startApplication");
+
+	childProcess.exec("ps aux | grep 'electron'", (err, stdout) => {
+		if (err) {
+			console.log("error");
+			console.log(err);
+		} else {
+			console.log(stdout);
+		}
+	});
+
 	var app = new Application(options);
 	return app.start().then(function() {
 		assert.equal(app.isRunning(), true);
@@ -58,19 +70,16 @@ exports.stopApplication = function(app) {
 	}
 
 	return app.stop().then(function() {
-		// console.log("is it still running?" + app.isRunning());
-		// const { exec } = require("child_process");
-		// exec("pgrep Electron", (err, stdout, stderr) => {
-		// 	if (err) {
-		// 		console.log("Electron is NOT found by pgrep");
-		// 	} else {
-		// 		console.log("Electron app found by pgrep");
+		console.log("Called stopApplication");
 
-		// 	}
-		// 	console.log(`stdout: ${stdout}`);
-		// 	console.log(`stderr: ${stderr}`);
-		// 	return;
-		// });
+	 	childProcess.exec("ps aux | grep 'electron'", (err, stdout) => {
+	 		if (err) {
+	 			console.log("error");
+	 			console.log(err);
+	 		} else {
+	 			console.log(stdout);
+	 		}
+	 	});
 		assert.equal(app.isRunning(), false);
 		return;
 	});
