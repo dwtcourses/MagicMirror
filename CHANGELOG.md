@@ -2,10 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [2.1.3] - Unreleased
+## [2.1.3] - 2017-10-01
+
+**Note:** This update uses new dependencies. Please update using the following command: `git pull && npm install`
 
 ### Changed
-- Remove Roboto fonts files inside  `fonts` and these are installed by npm install command.
+- Remove Roboto fonts files inside `fonts` and these are installed by npm install command.
 
 ### Added
 - Add `clientonly` script to start only the electron client for a remote server.
@@ -18,7 +20,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Add unit tests for function `roundValue` in currentweather module.
 - Add test e2e showWeek feature in spanish language.
 - Add warning Log when is used old authentication method in the calendar module.
-- Add test e2e for helloworld module with default config text
+- Add test e2e for helloworld module with default config text.
+- Add ability for `currentweather` module to display indoor humidity via INDOOR_HUMIDITY notification.
+- Add Welsh (Cymraeg) translation.
+- Add Slack badge to Readme.
 
 ### Updated
 - Changed 'default.js' - listen on all attached interfaces by default.
@@ -33,7 +38,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 - Fixed ipWhitelist behaviour to make empty whitelist ([]) allow any and all hosts access to the MM.
 - Fixed issue with calendar module where 'excludedEvents' count towards 'maximumEntries'.
 - Fixed issue with calendar module where global configuration of maximumEntries was not overridden by calendar specific config (see module doc).
-- Fixed issue where `this.file(filename)` returns a path with two hashes
+- Fixed issue where `this.file(filename)` returns a path with two hashes.
+- Workaround for the WeatherForecast API limitation.
 
 ## [2.1.2] - 2017-07-01
 
