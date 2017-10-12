@@ -65,9 +65,6 @@ exports.startApplication = function(options) {
 };
 
 exports.stopApplication = function(app) {
-	if (!app || !app.isRunning()) {
-		return;
-	}
 
 	return app.stop().then(function() {
 		console.log("Called stopApplication");
@@ -83,4 +80,8 @@ exports.stopApplication = function(app) {
 		assert.equal(app.isRunning(), false);
 		return;
 	});
+
+	if (!app || !app.isRunning()) {
+		return;
+	}
 };
