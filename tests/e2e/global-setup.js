@@ -70,6 +70,8 @@ exports.stopApplication = function(app) {
 		console.log("Called stopApplication");
 
 		// workaround failed tests in CI
+		console.log(typeof(electronPath));
+		console.log(electronPath);
 		if (typeof(electronPath) != "undefined" && process.env.CI) {
 			console.log(`pkill -f "${electronPath}"`);
 			childProcess.exec(`pkill -f "${electronPath}"`);
