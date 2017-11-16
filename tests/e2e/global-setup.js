@@ -69,7 +69,12 @@ exports.stopApplication = function(app) {
 	return app.stop().then(function() {
 		console.log("Called stopApplication");
 
-	 	childProcess.exec("ps aux | grep 'electron'", (err, stdout) => {
+		// workaround failed tests in CI
+		if (typeof(electronPath) != "undefined" && process.env.CI) {
+			childProcess.exec(`pkill -f "${electronPath}"`);
+		}
+
+			childProcess.exec("echo 'stop' && ps aux | grep 'electron'", (err, stdout) => {
 	 		if (err) {
 	 			console.log("error");
 	 			console.log(err);
