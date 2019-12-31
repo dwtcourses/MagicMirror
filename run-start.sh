@@ -7,13 +7,10 @@ if [ -z "$DISPLAY" ]; then #If not set DISPLAY is SSH remote or tty
 fi
 # get the processor architecture
 arch=$(uname -m)
-false='false'
-
-# get the config option, if any
-# only check non comment lines
-serveronly=$(grep -v '^\s//'  config/config.js | grep -i serveronly: | awk '{print tolower($2)}' | tr -d ,\"\')
+# got the config option, if any
+serveronly=$(grep -i serveronly: config/config.js | awk '{print tolower($2)}' | tr -d ,\"\')
 # set default if not defined in config
-serveronly=${serveronly:-false}
+serveronly="${serveronly:=false}"
 # check for xwindows running
 xorg=$(pgrep Xorg)
 #check for macOS
@@ -24,7 +21,7 @@ mac=$(uname)
 #    system is in text mode
 #
 if [ "$serveronly." != "false." -o  "$arch" == "armv6l" ] ||  [ "$xorg." == "." -a $mac != 'Darwin' ]; then
-
+	
 	# if user explicitly configured to run server only (no ui local)
 	# OR there is no xwindows running, so no support for browser graphics
 	if [ "$serveronly." == "true." -o "$xorg." == "." ]; then
@@ -63,5 +60,5 @@ if [ "$serveronly." != "false." -o  "$arch" == "armv6l" ] ||  [ "$xorg." == "." 
 	fi 
 else  
 	# we can use electron directly	
-	electron js/electron.js $1;
+	`electron js/electron.js $1`;
 fi
