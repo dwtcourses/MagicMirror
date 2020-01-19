@@ -14,21 +14,26 @@ describe("Vendors", function () {
 
 	var app = null;
 
-	before(function () {
-		return helpers.startApplication({
-			args: ["js/electron.js"]
-		}).then(function (startedApp) { app = startedApp; });
+	before(function() {
+		// Set config sample for use in test
+		process.env.MM_CONFIG_FILE = "tests/configs/env.js";
 	});
 
-	after(function () {
+	beforeEach(function() {
+		return helpers
+			.startApplication({
+				args: ["js/electron.js"]
+			})
+			.then(function(startedApp) {
+				app = startedApp;
+			});
+	});
+
+	afterEach(function() {
 		return helpers.stopApplication(app);
 	});
 
 	describe("Get list vendors", function () {
-
-		before(function () {
-			process.env.MM_CONFIG_FILE = "tests/configs/env.js";
-		});
 
 		var vendors = require(__dirname + "/../../vendor/vendor.js");
 		Object.keys(vendors).forEach(vendor => {
