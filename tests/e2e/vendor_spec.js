@@ -33,7 +33,7 @@ describe("Vendors", function () {
 		var vendors = require(__dirname + "/../../vendor/vendor.js");
 		Object.keys(vendors).forEach(vendor => {
 			it(`should return 200 HTTP code for vendor "${vendor}"`, function () {
-				urlVendor = "http://localhost:8080/vendor/" + vendors[vendor];
+				urlVendor = "http://127.0.0.1:8080/vendor/" + vendors[vendor];
 				request.get(urlVendor, function (err, res, body) {
 					if (!err)
 					{expect(res.statusCode).to.equal(200);}
