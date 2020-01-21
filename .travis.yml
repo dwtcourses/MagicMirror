@@ -1,7 +1,9 @@
-dist: trusty
+dist: xenial
 language: node_js
 node_js:
  - "10"
+services:
+ - xvfb
 before_install:
   - npm i -g npm
 before_script:
@@ -9,7 +11,7 @@ before_script:
  - npm install grunt-cli -g
  - "export DISPLAY=:99.0"
  - "export ELECTRON_DISABLE_SANDBOX=1"
- - "sh -e /etc/init.d/xvfb start"
+ #- "sh -e /etc/init.d/xvfb start"
  - sleep 5
 script:
 - npm run test:e2e
